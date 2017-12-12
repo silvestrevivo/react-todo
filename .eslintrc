@@ -1,0 +1,21 @@
+{
+    "extends": "airbnb",
+    "parser": "babel-eslint",
+    "parserOptions": {
+        "sourceType": "module",
+        "ecmaVersion": 6
+    },
+    "env": {
+        "node": true,
+        "browser": true,
+        "es6": true,
+        "jquery": true
+    },
+    "rules": {
+        "comma-dangle": "off",
+        "no-console": "off",
+        "indent": ["error", 2],
+        "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
+        "react/prefer-stateless-function": [<enabled>, { "ignorePureComponents": <ignorePureComponents> }]
+    }
+}
