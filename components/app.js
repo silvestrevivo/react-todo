@@ -12,8 +12,6 @@ class App extends Component {
     render() {
         // refractoring the this.state object
         const { buyItems, newItem, message } = this.state;
-        console.log(buyItems);
-        console.log(message);
 
         return (
             <div>
