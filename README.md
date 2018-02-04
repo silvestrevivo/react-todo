@@ -1,2 +1,2 @@
 # react-todo
-todo-list with multiple edition options created using ReactJS.
+To-do list with multiple edition/options created using ReactJS and Parcel.
