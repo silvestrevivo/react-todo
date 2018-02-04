@@ -4,7 +4,7 @@ class App extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            buyItems: [],
+            buyItems: ['milk', 'bread', 'apples'],
             newItem: '',
             message: ''
         };
