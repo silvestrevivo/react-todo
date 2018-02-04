@@ -1,7 +1,30 @@
+body {
+    background-color: beige;
+}
+
+.form-control {
+    margin: 0 20px;
+}
+
+.table {
+    background-color: white;
+}
+
+.message {
+    background-color: white;
+    padding: 10px;
+    border: 1px solid lightgrey;
+    border-radius: 5px;
+}
+
+.table, .message {
+    width: 80%;
+    margin: 20px auto;
+}
+
 h1 {
-    text-align: center;
     margin-top: 30px;
     font-family: 'Ubuntu', sans-serif;
     text-transform: uppercase;
-    color: salmon;
+    color: sandybrown;
 }
