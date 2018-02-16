@@ -1,20 +1,15 @@
 import React, { Component } from 'react';
 
 class App extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            buyItems: [],
-            newItem: '',
-            message: ''
-        };
+    state = {
+        buyItems: [],
+        newItem: '',
+        message: ''
     }
     render() {
-        // refractoring the this.state object
         const { buyItems, newItem, message } = this.state;
-
         return (
-            <div>
+            <div className="container">
                 <h1 className="text-center">Shopping list</h1>
                 <form
                     className="form-inline text-center"

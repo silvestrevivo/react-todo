@@ -1,10 +1,11 @@
 {
   "name": "react-todo",
   "version": "1.0.0",
-  "description": "to-do list developed with react and parcel",
+  "description": "to-do list developed with react, redux and parcel",
   "main": "index.html",
   "scripts": {
-    "start": "parcel index.html"
+    "start": "parcel src/index.html",
+    "build": "parcel build src/index.html --out-dir build/ --public-url ./"
   },
   "repository": {
     "type": "git",
@@ -23,11 +24,16 @@
   },
   "homepage": "https://github.com/silvestrevivo/react-todo#readme",
   "dependencies": {
+    "classnames": "^2.2.5",
     "node-sass": "^4.7.2",
+    "prop-types": "^15.6.0",
     "react": "^16.2.0",
     "react-dom": "^16.2.0"
   },
   "devDependencies": {
+    "babel-core": "^6.26.0",
+    "babel-plugin-transform-class-properties": "^6.24.1",
+    "babel-plugin-transform-object-rest-spread": "^6.26.0",
     "babel-preset-env": "^1.6.1",
     "babel-preset-react": "^6.24.1"
   }
