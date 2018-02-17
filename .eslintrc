@@ -1,0 +1,19 @@
+{
+    "parser": "babel-eslint",
+    "extends": [
+      "standard",
+      "standard-react"
+    ],
+    "env": {
+        "node": true,
+        "browser": true,
+        "es6": true,
+        "jquery": true
+    },
+    "rules": {
+        "jsx-quotes": [
+        "error",
+        "prefer-double"
+         ]
+    }
+}
