@@ -14,3 +14,18 @@ body {
 .todos-container{
   box-shadow: $box-shadow;
 }
+
+.footer{
+  background-color: $col-background-primary;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding: .5em 0;
+  color: $col-dark2;
+  text-align: center;
+  letter-spacing: .03rem;
+  a {
+    color: $col-dark1;
+  }
+}

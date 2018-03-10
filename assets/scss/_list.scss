@@ -29,6 +29,9 @@
     color: $col-dark2;
     padding: .1em 1em;
     flex: 1;
+    &.list__checked{
+      color: $col-dark3;
+    }
   }
 
   &__close{

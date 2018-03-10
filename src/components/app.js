@@ -1,12 +1,14 @@
 import React, { Component } from 'react'
 import uniqid from 'uniqid'
+import Aux from './aux'
 import Input from './input'
 import List from './list'
 
 class App extends Component {
   state = {
     value: '',
-    items: []
+    items: [],
+    checkedGeneral: false
   }
 
   handleKeyPress = (e) => {
@@ -15,6 +17,7 @@ class App extends Component {
       const item = { id: id, value: this.state.value }
       this.setState({
         value: '',
+        checkVisible: true,
         items: [...this.state.items, item]
       })
     }
@@ -28,19 +31,33 @@ class App extends Component {
     })
   }
 
+  checkedGeneral = () => {
+    this.setState({
+      checkedGeneral: !this.state.checkedGeneral
+    })
+  }
+
   render () {
-    const { value, items } = this.state
+    const { value, items, checkedGeneral } = this.state
+    console.log(checkedGeneral)
     return (
-      <div className="container">
-        <h1 className="header">todos</h1>
-        <div className="todos-container">
-          <Input
-            value={value}
-            onChange={event => this.setState({ value: event.target.value })}
-            onKeyPress={this.handleKeyPress} />
-          <List items={items} onClick={this.handleDelete} />
+      <Aux>
+        <div className="container">
+          <h1 className="header">todos</h1>
+          <div className="todos-container">
+            <Input
+              value={value}
+              checkVisible={this.state.items.length === 0}
+              onChangeChecked={this.checkedGeneral}
+              onChange={event => this.setState({ value: event.target.value })}
+              onKeyPress={this.handleKeyPress} />
+            <List items={items} onClick={this.handleDelete} checkedGeneral={checkedGeneral} />
+          </div>
         </div>
-      </div>
+        <footer className="footer">
+          <p>developed by <a href="http://www.github.com/silvestrevivo" target="_blank">@silvestrevivo</a></p>
+        </footer>
+      </Aux>
     )
   }
 }
