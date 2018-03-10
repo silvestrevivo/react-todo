@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import uniqid from 'uniqid'
 import Input from './input'
 import List from './list'
 
@@ -10,9 +11,11 @@ class App extends Component {
 
   handleKeyPress = (e) => {
     if (e.key === 'Enter' && this.state.value.length > 0) {
+      let id = uniqid()
+      const item = { id: id, value: this.state.value }
       this.setState({
         value: '',
-        items: [...this.state.items, this.state.value]
+        items: [...this.state.items, item]
       })
     }
   }
@@ -20,13 +23,12 @@ class App extends Component {
   handleDelete = (i) => {
     this.setState(prevState => {
       return {
-        items: prevState.items.filter(item => item !== i)
+        items: prevState.items.filter(item => item.id !== i)
       }
     })
   }
 
   render () {
-    // console.log(this.state)
     const { value, items } = this.state
     return (
       <div className="container">

@@ -6,17 +6,17 @@ class List extends Component {
 
   listItems = () => {
     const { items, onClick } = this.props
-    return items.map((item, i) => {
+    return items.map(item => {
       return (
-        <li key={i} className="list__item">
+        <li key={item.id} className="list__item">
           <div className="list__checkbox-container">
             <input type="checkbox" className="list__checkbox" />
           </div>
           <div className="list__text">
-            {item}
+            {item.value}
           </div>
           <div className="list__close">
-            <p onClick={() => onClick(item)}>&#10005;</p>
+            <p onClick={() => onClick(item.id)}>&#10005;</p>
           </div>
         </li>
       )
@@ -24,7 +24,6 @@ class List extends Component {
   }
 
   render () {
-    // console.log(this.props.items)
     return (
       <ul className="list">{this.listItems()}</ul>
     )
