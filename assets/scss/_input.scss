@@ -1,0 +1,45 @@
+.input{
+  background-color: $col-background-secondary;
+  height: 6em;
+  display: flex;
+
+  &__checkbox-container{
+    //border: 1px solid red;
+    padding: 0 1em;
+    align-self: center;
+  }
+
+  &__checkbox{
+    height: 4em;
+    width: 4em;
+  }
+
+  &__text{
+    //border: 1px solid blue;
+    border: none;
+    padding: 0 1em;
+    font-size: 2.5em;
+    color: $col-dark2;
+    background-color: $col-background-secondary;
+    font-family: inherit;
+    flex: 1;
+    &::placeholder {
+      color: $col-dark3;
+      opacity: 1; /* Firefox */
+      font-style: italic;
+      font-weight: 300;
+    }
+
+    &:-ms-input-placeholder { /* Internet Explorer 10-11 */
+     color: $col-dark3;
+     font-style: italic;
+     font-weight: 300;
+    }
+
+    &::-ms-input-placeholder { /* Microsoft Edge */
+     color: $col-dark3;
+     font-style: italic;
+     font-weight: 300;
+    }
+  }
+}

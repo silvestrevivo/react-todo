@@ -1,0 +1,16 @@
+////// Base for the proyect itself //////
+body {
+  font-family: 'Ubuntu', sans-serif;
+  font-weight: 400;
+  line-height: 1.7;
+  background-color: $col-background-primary;
+}
+
+.container {
+  max-width: 550px;
+  margin: 0 auto;
+}
+
+.todos-container{
+  box-shadow: $box-shadow;
+}
