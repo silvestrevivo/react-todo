@@ -3,6 +3,7 @@ import uniqid from 'uniqid'
 import Aux from './aux'
 import Input from './input'
 import List from './list'
+import FooterList from './footer-list'
 
 class App extends Component {
   state = {
@@ -52,6 +53,7 @@ class App extends Component {
               onChange={event => this.setState({ value: event.target.value })}
               onKeyPress={this.handleKeyPress} />
             <List items={items} onClick={this.handleDelete} checkedGeneral={checkedGeneral} />
+            {items.length > 0 ? <FooterList length={items.length} /> : null}
           </div>
         </div>
         <footer className="footer">
