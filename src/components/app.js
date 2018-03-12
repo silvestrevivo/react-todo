@@ -163,7 +163,10 @@ class App extends Component {
               onClickAll={this.all}
               onClickActive={this.active}
               onClickCompleted={this.completed}
-              onClickClearAll={this.clearAll} /> : null}
+              onClickClearAll={this.clearAll}
+              showAll={this.state.showAll}
+              showActive={this.state.showActive}
+              showCompleted={this.state.showCompleted} /> : null}
           </div>
         </div>
         <footer className="footer">

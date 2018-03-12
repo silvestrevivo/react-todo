@@ -11,6 +11,9 @@
 
   > div{
     text-shadow: $text-shadow-footer;
+    .selected{
+      border-color: $col-primary;
+    }
   }
 
   &__counter{
@@ -22,7 +25,7 @@
     > *{
       padding: .3em 1em;
       margin: 0 .5em;
-      border: 1px solid $col-primary;
+      border: 1px solid transparent;
       border-radius: 3px;
       cursor: pointer;
     }
