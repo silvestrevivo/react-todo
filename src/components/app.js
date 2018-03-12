@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import uniqid from 'uniqid'
+import { bake_cookie as bakeCookie, read_cookie as readCookie } from 'sfcookies'
 import Aux from './aux'
 import Input from './input'
 import List from './list'
@@ -8,7 +9,7 @@ import FooterList from './footer-list'
 class App extends Component {
   state = {
     value: '',
-    items: [],
+    items: readCookie('items') || [],
     itemsActive: [],
     itemsCompleted: [],
     showAll: true,
@@ -108,7 +109,8 @@ class App extends Component {
         this.helperCheckGeneralFalse()
         // helper to avoid loop
       }
-      this.helperActiveCompleted()
+      this.helperActiveCompleted() // to update both arrays
+      bakeCookie('items', this.state.items) // to write cookie with items array
     }
   }
 

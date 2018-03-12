@@ -32,6 +32,7 @@
     "react-dom": "^16.2.0",
     "react-redux": "^5.0.7",
     "redux": "^3.7.2",
+    "sfcookies": "^1.0.2",
     "uniqid": "^4.1.1"
   },
   "devDependencies": {
