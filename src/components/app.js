@@ -10,8 +10,8 @@ class App extends Component {
   state = {
     value: '',
     items: readCookie('items') || [],
-    itemsActive: [],
-    itemsCompleted: [],
+    itemsActive: readCookie('itemsActive') || [],
+    itemsCompleted: readCookie('itemsCompleted') || [],
     showAll: true,
     showActive: false,
     showCompleted: false,
@@ -111,6 +111,8 @@ class App extends Component {
       }
       this.helperActiveCompleted() // to update both arrays
       bakeCookie('items', this.state.items) // to write cookie with items array
+      bakeCookie('itemsActive', this.state.itemsActive)
+      bakeCookie('itemsCompleted', this.state.itemsCompleted)
     }
   }
 
