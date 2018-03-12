@@ -3,33 +3,35 @@ import ListItem from './list-item'
 import PropTypes from 'prop-types'
 
 class List extends Component {
-  // state = { checked: false }
+  static propTypes = {
+    items: PropTypes.array,
+    onClick: PropTypes.func,
+    onChange: PropTypes.func,
+    checkedGeneral: PropTypes.bool
+  }
 
   listItems = () => {
-    const { items, onClick, checkedGeneral } = this.props
+    const { items, onClick, checkedGeneral, onChange } = this.props
     return items.map(item => {
       return (
         <ListItem
           key={item.id}
           id={item.id}
           value={item.value}
+          checked={item.checked}
           onClick={onClick}
+          onChange={onChange}
           checkedGeneral={checkedGeneral} />
       )
     })
   }
 
   render () {
+    // console.log(this.props.items)
     return (
       <ul className="list">{this.listItems()}</ul>
     )
   }
-}
-
-List.propTypes = {
-  items: PropTypes.array,
-  onClick: PropTypes.func,
-  checkedGeneral: PropTypes.bool
 }
 
 export default List

@@ -15,7 +15,7 @@ class App extends Component {
   handleKeyPress = (e) => {
     if (e.key === 'Enter' && this.state.value.length > 0) {
       let id = uniqid()
-      const item = { id: id, value: this.state.value }
+      const item = { id: id, checked: false, value: this.state.value }
       this.setState({
         value: '',
         checkVisible: true,
@@ -32,6 +32,22 @@ class App extends Component {
     })
   }
 
+  handleIndividualCheck = (id) => {
+    const newItems = this.state.items.map(item => {
+      if (item.id === id) {
+        return {
+          ...item,
+          checked: !item.checked
+        }
+      } else {
+        return item
+      }
+    })
+    this.setState({
+      items: newItems
+    })
+  }
+
   checkedGeneral = () => {
     this.setState({
       checkedGeneral: !this.state.checkedGeneral
@@ -40,7 +56,7 @@ class App extends Component {
 
   render () {
     const { value, items, checkedGeneral } = this.state
-    console.log(checkedGeneral)
+    // console.log(checkedGeneral)
     return (
       <Aux>
         <div className="container">
@@ -52,8 +68,8 @@ class App extends Component {
               onChangeChecked={this.checkedGeneral}
               onChange={event => this.setState({ value: event.target.value })}
               onKeyPress={this.handleKeyPress} />
-            <List items={items} onClick={this.handleDelete} checkedGeneral={checkedGeneral} />
-            {items.length > 0 ? <FooterList length={items.length} /> : null}
+            <List items={items} onClick={this.handleDelete} checkedGeneral={checkedGeneral} onChange={this.handleIndividualCheck} />
+            {items.length > 0 ? <FooterList items={items} /> : null}
           </div>
         </div>
         <footer className="footer">

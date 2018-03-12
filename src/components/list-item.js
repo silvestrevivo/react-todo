@@ -3,6 +3,14 @@ import PropTypes from 'prop-types'
 import Classnames from 'classnames'
 
 class ListItem extends Component {
+  static propTypes = {
+    value: PropTypes.string,
+    id: PropTypes.string,
+    onClick: PropTypes.func,
+    onChange: PropTypes.func,
+    checked: PropTypes.bool
+  }
+
   state = { checked: false }
 
   // componentWillReceiveProps() {
@@ -10,14 +18,15 @@ class ListItem extends Component {
   // }
 
   render () {
-    const { value, onClick, id } = this.props
+    const { value, onClick, id, checked, onChange } = this.props
     return (
       <li className="list__item">
         <div className="list__checkbox-container">
           <input
             type="checkbox"
             className="list__checkbox"
-            onChange={() => this.setState({ checked: !this.state.checked })}
+            checked={checked}
+            onChange={() => onChange(id)}
           />
         </div>
         <div className={Classnames('list__text', this.state.checked ? 'list__checked' : null)}>
@@ -29,12 +38,6 @@ class ListItem extends Component {
       </li>
     )
   }
-}
-
-ListItem.propTypes = {
-  value: PropTypes.string,
-  id: PropTypes.string,
-  onClick: PropTypes.func
 }
 
 export default ListItem
