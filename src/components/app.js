@@ -69,12 +69,31 @@ class App extends Component {
     })
   }
 
+  helperCheckGeneralTrue = () => {
+    this.setState({
+      checkedGeneral: true
+    })
+  }
+
+  helperCheckGeneralFalse = () => {
+    this.setState({
+      checkedGeneral: false
+    })
+  }
+
   componentDidUpdate (prevProps, prevState) {
     const arrayLength = this.state.items.length
     const arrayCheckedLength = this.state.items.filter(item => item.checked === true).length
-    if ((arrayLength === arrayCheckedLength && prevState.checkedGeneral === false) && arrayLength > 0) {
-      // this.checkedGeneral()
-      // this needs a different approaching
+
+    // condition to avoid loop
+    if (prevState.items !== this.state.items) {
+      if ((arrayLength === arrayCheckedLength && prevState.checkedGeneral === false) && arrayLength > 0) {
+        this.helperCheckGeneralTrue()
+        // helper to avoid loop
+      } else if ((arrayLength > arrayCheckedLength && prevState.checkedGeneral === true) && arrayLength > 0) {
+        this.helperCheckGeneralFalse()
+        // helper to avoid loop
+      }
     }
   }
 
