@@ -9,9 +9,15 @@ class App extends Component {
   state = {
     value: '',
     items: [],
+    itemsActive: [],
+    itemsCompleted: [],
+    showAll: true,
+    showActive: false,
+    showCompleted: false,
     checkedGeneral: false
   }
 
+  // Basic handlers
   handleKeyPress = (e) => {
     if (e.key === 'Enter' && this.state.value.length > 0) {
       let id = uniqid()
@@ -69,6 +75,7 @@ class App extends Component {
     })
   }
 
+  // update component for controlling the amount of items checked
   helperCheckGeneralTrue = () => {
     this.setState({
       checkedGeneral: true
@@ -78,6 +85,13 @@ class App extends Component {
   helperCheckGeneralFalse = () => {
     this.setState({
       checkedGeneral: false
+    })
+  }
+
+  helperActiveCompleted = () => {
+    this.setState({
+      itemsActive: this.state.items.filter(item => item.checked === false),
+      itemsCompleted: this.state.items.filter(item => item.checked === true)
     })
   }
 
@@ -94,11 +108,37 @@ class App extends Component {
         this.helperCheckGeneralFalse()
         // helper to avoid loop
       }
+      this.helperActiveCompleted()
     }
   }
 
+  // showing differents lists
+  all = () => {
+    this.setState({
+      showAll: true,
+      showActive: false,
+      showCompleted: false
+    })
+  }
+
+  active = () => {
+    this.setState({
+      showAll: false,
+      showActive: true,
+      showCompleted: false
+    })
+  }
+
+  completed = () => {
+    this.setState({
+      showAll: false,
+      showActive: false,
+      showCompleted: true
+    })
+  }
+
   render () {
-    const { value, items, checkedGeneral } = this.state
+    const { value, items, itemsActive, itemsCompleted, checkedGeneral, showAll, showActive, showCompleted } = this.state
     return (
       <Aux>
         <div className="container">
@@ -111,8 +151,15 @@ class App extends Component {
               onCheckedGeneral={this.onCheckedGeneral}
               onChange={event => this.setState({ value: event.target.value })}
               onKeyPress={this.handleKeyPress} />
-            <List items={items} onClick={this.handleDelete} onChange={this.handleIndividualCheck} />
-            {items.length > 0 ? <FooterList items={items} onClick={this.clearAll} /> : null}
+            {showAll && <List items={items} onClick={this.handleDelete} onChange={this.handleIndividualCheck} />}
+            {showActive && <List items={itemsActive} onClick={this.handleDelete} onChange={this.handleIndividualCheck} />}
+            {showCompleted && <List items={itemsCompleted} onClick={this.handleDelete} onChange={this.handleIndividualCheck} />}
+            {items.length > 0 ? <FooterList
+              items={items}
+              onClickAll={this.all}
+              onClickActive={this.active}
+              onClickCompleted={this.completed}
+              onClickClearAll={this.clearAll} /> : null}
           </div>
         </div>
         <footer className="footer">
