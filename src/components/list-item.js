@@ -13,10 +13,6 @@ class ListItem extends Component {
 
   state = { checked: false }
 
-  // componentWillReceiveProps() {
-  //   ///
-  // }
-
   render () {
     const { value, onClick, id, checked, onChange } = this.props
     return (

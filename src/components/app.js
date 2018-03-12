@@ -48,15 +48,38 @@ class App extends Component {
     })
   }
 
-  checkedGeneral = () => {
+  clearAll = () => {
+    const filterArray = this.state.items.filter(item => item.checked === false)
     this.setState({
-      checkedGeneral: !this.state.checkedGeneral
+      items: filterArray,
+      value: '',
+      checkedGeneral: false
     })
+  }
+
+  onCheckedGeneral = () => {
+    this.setState({
+      checkedGeneral: !this.state.checkedGeneral,
+      items: this.state.items.map(item => {
+        return {
+          ...item,
+          checked: !this.state.checkedGeneral
+        }
+      })
+    })
+  }
+
+  componentDidUpdate (prevProps, prevState) {
+    const arrayLength = this.state.items.length
+    const arrayCheckedLength = this.state.items.filter(item => item.checked === true).length
+    if ((arrayLength === arrayCheckedLength && prevState.checkedGeneral === false) && arrayLength > 0) {
+      // this.checkedGeneral()
+      // this needs a different approaching
+    }
   }
 
   render () {
     const { value, items, checkedGeneral } = this.state
-    // console.log(checkedGeneral)
     return (
       <Aux>
         <div className="container">
@@ -65,11 +88,12 @@ class App extends Component {
             <Input
               value={value}
               checkVisible={this.state.items.length === 0}
-              onChangeChecked={this.checkedGeneral}
+              checkedGeneral={checkedGeneral}
+              onCheckedGeneral={this.onCheckedGeneral}
               onChange={event => this.setState({ value: event.target.value })}
               onKeyPress={this.handleKeyPress} />
-            <List items={items} onClick={this.handleDelete} checkedGeneral={checkedGeneral} onChange={this.handleIndividualCheck} />
-            {items.length > 0 ? <FooterList items={items} /> : null}
+            <List items={items} onClick={this.handleDelete} onChange={this.handleIndividualCheck} />
+            {items.length > 0 ? <FooterList items={items} onClick={this.clearAll} /> : null}
           </div>
         </div>
         <footer className="footer">

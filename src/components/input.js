@@ -2,14 +2,15 @@ import React from 'react'
 import Classnames from 'classnames'
 import PropTypes from 'prop-types'
 
-const Input = ({ value, onChange, onKeyPress, onChangeChecked, checkVisible }) => {
+const Input = ({ value, onChange, onKeyPress, onCheckedGeneral, checkedGeneral, checkVisible }) => {
   return (
     <div className="input">
       <div className="input__checkbox-container">
         <input
           type="checkbox"
+          checked={checkedGeneral}
           className={Classnames('input__checkbox', checkVisible ? 'hidden' : null)}
-          onChange={onChangeChecked} />
+          onChange={onCheckedGeneral} />
       </div>
       <input
         type="text"
@@ -26,8 +27,9 @@ Input.propTypes = {
   value: PropTypes.string,
   onChange: PropTypes.func,
   onKeyPress: PropTypes.func,
-  onChangeChecked: PropTypes.func,
-  checkVisible: PropTypes.bool
+  onCheckedGeneral: PropTypes.func,
+  checkVisible: PropTypes.bool,
+  checkedGeneral: PropTypes.bool
 }
 
 export default Input

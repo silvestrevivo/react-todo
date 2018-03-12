@@ -3,7 +3,8 @@ import PropTypes from 'prop-types'
 
 class FooterList extends Component {
   static propTypes = {
-    items: PropTypes.array
+    items: PropTypes.array,
+    onClick: PropTypes.func
   }
 
   counter = () => {
@@ -22,7 +23,7 @@ class FooterList extends Component {
           <p className="footer-list__controls--active">active</p>
           <p className="footer-list__controls--completed">completed</p>
         </div>
-        <div className="footer-list__clear">
+        <div className="footer-list__clear" onClick={this.props.onClick}>
           clear completed
         </div>
       </div>

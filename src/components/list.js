@@ -6,12 +6,11 @@ class List extends Component {
   static propTypes = {
     items: PropTypes.array,
     onClick: PropTypes.func,
-    onChange: PropTypes.func,
-    checkedGeneral: PropTypes.bool
+    onChange: PropTypes.func
   }
 
   listItems = () => {
-    const { items, onClick, checkedGeneral, onChange } = this.props
+    const { items, onClick, onChange } = this.props
     return items.map(item => {
       return (
         <ListItem
@@ -20,14 +19,12 @@ class List extends Component {
           value={item.value}
           checked={item.checked}
           onClick={onClick}
-          onChange={onChange}
-          checkedGeneral={checkedGeneral} />
+          onChange={onChange} />
       )
     })
   }
 
   render () {
-    // console.log(this.props.items)
     return (
       <ul className="list">{this.listItems()}</ul>
     )
