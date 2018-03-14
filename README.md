@@ -3,6 +3,13 @@ To-do list with multiple options/editions created using ReactJS. ParcelJS is use
 
 ![Alt text](https://playground.uonsite.nl/react/todo-list/todo.jpg "todo scheme")
 
+Ensure you have [ParcelJS](https://parceljs.org/ "ParcelJS") installed globally in your computer.
+
+```
+npm install -g parcel-bundler
+```
+Download the master branch and from the terminal inside of the folder, run ***npm install*** to place the __node_modules__ in your project.
+
 To develop:
 ```
 npm start
