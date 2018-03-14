@@ -25,7 +25,6 @@ class App extends Component {
       const item = { id: id, checked: false, value: this.state.value }
       this.setState({
         value: '',
-        checkVisible: true,
         items: [...this.state.items, item]
       })
     }
