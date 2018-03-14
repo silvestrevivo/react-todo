@@ -10,6 +10,12 @@
 
   &__checkbox{
     transform: scale(2.5);
+    @include respond(tab-port){
+      transform: scale(2.2)
+    }
+    @include respond(phone){
+      transform: scale(2)
+    }
   }
 
   &__text{
