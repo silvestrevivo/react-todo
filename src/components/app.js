@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import uniqid from 'uniqid'
 import { bake_cookie as bakeCookie, read_cookie as readCookie } from 'sfcookies'
-import Aux from './aux'
+import Aux from './auxHoc'
 import Input from './input'
 import List from './list'
 import FooterList from './footer-list'
